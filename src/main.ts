@@ -23,49 +23,42 @@ export default class NaturalLanguageDates extends Plugin {
       id: "nlp-dates",
       name: "Parse natural language date",
       callback: () => getParseCommand(this, "replace"),
-      hotkeys: [],
     });
 
     this.addCommand({
       id: "nlp-dates-link",
       name: "Parse natural language date (as link)",
       callback: () => getParseCommand(this, "link"),
-      hotkeys: [],
     });
 
     this.addCommand({
       id: "nlp-date-clean",
       name: "Parse natural language date (as plain text)",
       callback: () => getParseCommand(this, "clean"),
-      hotkeys: [],
     });
 
     this.addCommand({
       id: "nlp-parse-time",
       name: "Parse natural language time",
       callback: () => getParseCommand(this, "time"),
-      hotkeys: [],
     });
 
     this.addCommand({
       id: "nlp-now",
       name: "Insert the current date and time",
       callback: () => getNowCommand(this),
-      hotkeys: [],
     });
 
     this.addCommand({
       id: "nlp-today",
       name: "Insert the current date",
       callback: () => getCurrentDateCommand(this),
-      hotkeys: [],
     });
 
     this.addCommand({
       id: "nlp-time",
       name: "Insert the current time",
       callback: () => getCurrentTimeCommand(this),
-      hotkeys: [],
     });
 
     this.addCommand({
@@ -77,10 +70,10 @@ export default class NaturalLanguageDates extends Plugin {
         }
         new DatePickerModal(this.app, this).open();
       },
-      hotkeys: [],
     });
 
     this.addSettingTab(new NLDSettingsTab(this.app, this));
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     this.registerObsidianProtocolHandler("nldates", this.actionHandler.bind(this));
     this.registerEditorSuggest(new DateSuggest(this.app, this));
 
@@ -91,11 +84,10 @@ export default class NaturalLanguageDates extends Plugin {
   }
 
   onunload(): void {
-    console.log("Unloading natural language date parser plugin");
   }
 
   async loadSettings(): Promise<void> {
-    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData()) as NLDSettings;
   }
 
   async saveSettings(): Promise<void> {
@@ -141,7 +133,7 @@ export default class NaturalLanguageDates extends Plugin {
 
     if (date.moment.isValid()) {
       const dailyNote = await getOrCreateDailyNote(date.moment);
-      workspace.getLeaf(newPane).openFile(dailyNote);
+      await workspace.getLeaf(newPane).openFile(dailyNote);
     }
   }
 }
