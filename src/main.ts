@@ -22,48 +22,56 @@ export default class NaturalLanguageDates extends Plugin {
     this.addCommand({
       id: "nlp-dates",
       name: "Parse natural language date",
+      icon: 'calendar-check',
       callback: () => getParseCommand(this, "replace"),
     });
 
     this.addCommand({
       id: "nlp-dates-link",
       name: "Parse natural language date (as link)",
+      icon: 'calendar-fold',
       callback: () => getParseCommand(this, "link"),
     });
 
     this.addCommand({
       id: "nlp-date-clean",
       name: "Parse natural language date (as plain text)",
+      icon: 'calendar-days',
       callback: () => getParseCommand(this, "clean"),
     });
 
     this.addCommand({
       id: "nlp-parse-time",
       name: "Parse natural language time",
+      icon: 'clock',
       callback: () => getParseCommand(this, "time"),
     });
 
     this.addCommand({
       id: "nlp-now",
       name: "Insert the current date and time",
+      icon: 'calendar-clock',
       callback: () => getNowCommand(this),
     });
 
     this.addCommand({
       id: "nlp-today",
       name: "Insert the current date",
+      icon: 'calendar-plus',
       callback: () => getCurrentDateCommand(this),
     });
 
     this.addCommand({
       id: "nlp-time",
       name: "Insert the current time",
+      icon: 'clock-plus',
       callback: () => getCurrentTimeCommand(this),
     });
 
     this.addCommand({
       id: "nlp-picker",
       name: "Date picker",
+      icon: 'calendar',
       checkCallback: (checking: boolean) => {
         if (checking) {
           return !!this.app.workspace.getActiveViewOfType(MarkdownView);

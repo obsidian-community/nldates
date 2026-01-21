@@ -1,4 +1,4 @@
-import chrono, { Chrono, Parser } from "chrono-node";
+import { Chrono, Parser, en } from "chrono-node";
 import { DayOfWeek } from "./settings";
 import {
   ORDINAL_NUMBER_PATTERN,
@@ -7,7 +7,7 @@ import {
   getWeekNumber,
   parseOrdinalNumberPattern,
 } from "./utils";
-import { moment } from "obsidian";
+import { getLanguage, moment } from "obsidian";
 
 export interface NLDResult {
   formattedString: string;
@@ -16,13 +16,13 @@ export interface NLDResult {
 }
 
 function getLocalizedChrono(): Chrono {
-  const locale = window.moment.locale();
+  const locale = getLanguage();
 
   switch (locale) {
     case "en-gb":
-      return new Chrono(chrono.en.createCasualConfiguration(true));
+      return new Chrono(en.createCasualConfiguration(true));
     default:
-      return new Chrono(chrono.en.createCasualConfiguration(false));
+      return new Chrono(en.createCasualConfiguration(false));
   }
 }
 

@@ -54,6 +54,7 @@ const weekdays = [
 
 export class NLDSettingsTab extends PluginSettingTab {
   plugin: NaturalLanguageDates;
+  icon = 'calendar-plus';
 
   constructor(app: App, plugin: NaturalLanguageDates) {
     super(app, plugin);
