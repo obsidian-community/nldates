@@ -29,5 +29,6 @@
   "dependencies": {
     "chrono-node": "github:liamcain/chrono",
     "obsidian-daily-notes-interface": "0.9.4"
-  }
+  },
+  "packageManager": "pnpm@10.28.1"
 }
