@@ -5,21 +5,17 @@
   "main": "main.js",
   "scripts": {
     "lint": "eslint . --ext .ts",
-    "dev": "rollup --config rollup.config.js -w",
-    "build": "rollup --config rollup.config.js"
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "21.0.1",
-    "@rollup/plugin-node-resolve": "13.0.6",
-    "@rollup/plugin-typescript": "8.3.0",
-    "@types/moment": "2.13.0",
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "5.3.1",
     "@typescript-eslint/parser": "5.3.1",
-    "rollup": "^2.60.0",
+    "esbuild": "0.27.2",
     "eslint": "8.2.0",
     "obsidian": "latest",
     "prettier": "2.4.1",
