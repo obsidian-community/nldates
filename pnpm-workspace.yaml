@@ -1,2 +1,2 @@
-onlyBuildDependencies:
+onlyBuiltDependencies:
   - chrono-node
