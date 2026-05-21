@@ -2,6 +2,8 @@
 
 Insert timestamps and cross-link your daily notes with the flexibility of natural language. NLDates provides a suite of tools that makes working with dates and times within Obsidian frictionless.
 
+✨ Maintained by [Argenos](https://github.com/argenos) and the Obsidian Community members.
+
 ## Features
 
 - [Date Autosuggest](#date-autosuggest)
@@ -28,7 +30,7 @@ Typing `@today` <kbd>Enter</kbd> will automatically be expanded to the current d
 
 ## `nldates` URI Action
 
-It's now possible to use the [Obsidian URI](https://publish.obsidian.md/help/Advanced+topics/Using+obsidian+URI) to open daily notes using natural language by using the nldates action `obsidian://nldates?day=<date here>`. Don't forget to [encode space characters](https://publish.obsidian.md/help/Advanced+topics/Using+obsidian+URI#Encoding) appropriately.
+It's now possible to use the [Obsidian URI](https://obsidian.md/help/uri) to open daily notes using natural language by using the nldates action `obsidian://nldates?day=<date here>`. Don't forget to [encode space characters](https://obsidian.md/help/uri#URI+format) appropriately.
 
 | `obsidian://nldates` Parameter | Description                             |
 | ------------------------------ | --------------------------------------- |
@@ -90,7 +92,7 @@ In Obsidian go to `Settings > Third-party plugins > Community Plugins > Browse` 
 
 ### Manual installation
 
-Unzip the [latest release](https://github.com/argenos/nldates-obsidian/releases/latest) into your `<vault>/.obsidian/plugins/` folder.
+Unzip the [latest release](https://github.com/obsidian-community/nldates/releases) into your `<vault>/.obsidian/plugins/` folder.
 
 ## About
 
