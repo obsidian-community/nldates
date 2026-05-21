@@ -1,6 +1,4 @@
-import chrono, { Chrono, Parser } from "chrono-node";
-import type { Moment } from "moment";
-
+import { Chrono, Parser, en } from "chrono-node";
 import { DayOfWeek } from "./settings";
 import {
   ORDINAL_NUMBER_PATTERN,
@@ -9,21 +7,22 @@ import {
   getWeekNumber,
   parseOrdinalNumberPattern,
 } from "./utils";
+import { getLanguage, moment } from "obsidian";
 
 export interface NLDResult {
   formattedString: string;
   date: Date;
-  moment: Moment;
+  moment: moment.Moment;
 }
 
 function getLocalizedChrono(): Chrono {
-  const locale = window.moment.locale();
+  const locale = getLanguage();
 
   switch (locale) {
     case "en-gb":
-      return new Chrono(chrono.en.createCasualConfiguration(true));
+      return new Chrono(en.createCasualConfiguration(true));
     default:
-      return new Chrono(chrono.en.createCasualConfiguration(false));
+      return new Chrono(en.createCasualConfiguration(false));
   }
 }
 
@@ -84,10 +83,12 @@ export default class NLDParser {
       : new Date();
 
     if (thisDateMatch && thisDateMatch[1] === "week") {
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       return parser.parseDate(`this ${weekStart}`, referenceDate);
     }
 
     if (nextDateMatch && nextDateMatch[1] === "week") {
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       return parser.parseDate(`next ${weekStart}`, referenceDate, {
         forwardDate: true,
       });

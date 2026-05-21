@@ -59,24 +59,25 @@ export default class DatePickerModal extends Modal {
       previewEl = dateInputEl.descEl;
 
       new Setting(formEl)
-        .setName("Date Format")
+        .setName("Date format")
         .setDesc("Moment format to be used")
         .addMomentFormat((momentEl) => {
+          // eslint-disable-next-line obsidianmd/ui/sentence-case
           momentEl.setPlaceholder("YYYY-MM-DD HH:mm");
           momentEl.setValue(momentFormat);
-          momentEl.onChange((value) => {
+          momentEl.onChange(async (value) => {
             momentFormat = value.trim() || "YYYY-MM-DD HH:mm";
             this.plugin.settings.modalMomentFormat = momentFormat;
-            this.plugin.saveSettings();
+            await this.plugin.saveSettings();
 
             previewEl.setText(getDateStr());
           });
         });
       new Setting(formEl).setName("Add as link?").addToggle((toggleEl) => {
-        toggleEl.setValue(this.plugin.settings.modalToggleLink).onChange((value) => {
+        toggleEl.setValue(this.plugin.settings.modalToggleLink).onChange(async (value) => {
           insertAsLink = value;
           this.plugin.settings.modalToggleLink = insertAsLink;
-          this.plugin.saveSettings();
+          await this.plugin.saveSettings();
 
           previewEl.setText(getDateStr());
         });
@@ -89,7 +90,7 @@ export default class DatePickerModal extends Modal {
         buttonContainerEl.createEl("button", {
           attr: { type: "submit" },
           cls: "mod-cta",
-          text: "Insert Date",
+          text: "Insert date",
         });
       });
 

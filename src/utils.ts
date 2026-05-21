@@ -1,5 +1,12 @@
-import { Moment } from "moment";
-import { App, Editor, EditorRange, EditorPosition, normalizePath, TFile } from "obsidian";
+import {
+  App,
+  Editor,
+  EditorRange,
+  EditorPosition,
+  normalizePath,
+  TFile,
+  moment,
+} from "obsidian";
 import {
   createDailyNote,
   getAllDailyNotes,
@@ -95,7 +102,7 @@ export function generateMarkdownLink(app: App, subpath: string, alias?: string) 
   }
 }
 
-export async function getOrCreateDailyNote(date: Moment): Promise<TFile | null> {
+export async function getOrCreateDailyNote(date: moment.Moment): Promise<TFile | null> {
   // Borrowed from the Slated plugin:
   // https://github.com/tgrosinger/slated-obsidian/blob/main/src/vault.ts#L17
   const desiredNote = getDailyNote(date, getAllDailyNotes());

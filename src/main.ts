@@ -22,65 +22,66 @@ export default class NaturalLanguageDates extends Plugin {
     this.addCommand({
       id: "nlp-dates",
       name: "Parse natural language date",
+      icon: 'calendar-check',
       callback: () => getParseCommand(this, "replace"),
-      hotkeys: [],
     });
 
     this.addCommand({
       id: "nlp-dates-link",
       name: "Parse natural language date (as link)",
+      icon: 'calendar-fold',
       callback: () => getParseCommand(this, "link"),
-      hotkeys: [],
     });
 
     this.addCommand({
       id: "nlp-date-clean",
       name: "Parse natural language date (as plain text)",
+      icon: 'calendar-days',
       callback: () => getParseCommand(this, "clean"),
-      hotkeys: [],
     });
 
     this.addCommand({
       id: "nlp-parse-time",
       name: "Parse natural language time",
+      icon: 'clock',
       callback: () => getParseCommand(this, "time"),
-      hotkeys: [],
     });
 
     this.addCommand({
       id: "nlp-now",
       name: "Insert the current date and time",
+      icon: 'calendar-clock',
       callback: () => getNowCommand(this),
-      hotkeys: [],
     });
 
     this.addCommand({
       id: "nlp-today",
       name: "Insert the current date",
+      icon: 'calendar-plus',
       callback: () => getCurrentDateCommand(this),
-      hotkeys: [],
     });
 
     this.addCommand({
       id: "nlp-time",
       name: "Insert the current time",
+      icon: 'clock-plus',
       callback: () => getCurrentTimeCommand(this),
-      hotkeys: [],
     });
 
     this.addCommand({
       id: "nlp-picker",
       name: "Date picker",
+      icon: 'calendar',
       checkCallback: (checking: boolean) => {
         if (checking) {
           return !!this.app.workspace.getActiveViewOfType(MarkdownView);
         }
         new DatePickerModal(this.app, this).open();
       },
-      hotkeys: [],
     });
 
     this.addSettingTab(new NLDSettingsTab(this.app, this));
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     this.registerObsidianProtocolHandler("nldates", this.actionHandler.bind(this));
     this.registerEditorSuggest(new DateSuggest(this.app, this));
 
@@ -91,11 +92,10 @@ export default class NaturalLanguageDates extends Plugin {
   }
 
   onunload(): void {
-    console.log("Unloading natural language date parser plugin");
   }
 
   async loadSettings(): Promise<void> {
-    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData()) as NLDSettings;
   }
 
   async saveSettings(): Promise<void> {
@@ -141,7 +141,7 @@ export default class NaturalLanguageDates extends Plugin {
 
     if (date.moment.isValid()) {
       const dailyNote = await getOrCreateDailyNote(date.moment);
-      workspace.getLeaf(newPane).openFile(dailyNote);
+      await workspace.getLeaf(newPane).openFile(dailyNote);
     }
   }
 }
