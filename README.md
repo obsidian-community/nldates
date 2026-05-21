@@ -178,3 +178,20 @@ console.log(thisEvening.moment.add(1, "hour")); // This would change the Moment 
 ```
 
 Note that if you manipulate the `parsedResult.moment`, the `date` and `formattedString` won't be updated. If you don't want to alter the `parsedResult.moment`, you should clone it. Read more about that on [the moment.js docs site](https://momentjs.com/docs/#/parsing/date/).
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/argenos"><img src="https://avatars.githubusercontent.com/u/5426039?v=4" width="100px;" alt="Argentina Ortega"/><br /><sub><b>Argentina Ortega</b></sub></a><br /><a title="Code">💻</a> <a title="Maintenance">🚧</a> <a title="Ideas">🤔</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/sigrunixia"><img src="https://avatars.githubusercontent.com/u/68425372?v=4" width="100px;" alt="Rebbecca Bishop"/><br /><sub><b>Rebbecca Bishop</b></sub></a><br /><a title="Maintenance">🚧</a> <a title="Infrastructure">🚇</a></td>
+    </tr>
+  </tbody>
+</table>
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->

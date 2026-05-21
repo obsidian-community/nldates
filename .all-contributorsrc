@@ -1,0 +1,26 @@
+{
+  "projectName": "nldates",
+  "projectOwner": "obsidian-community",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": ["README.md"],
+  "imageSize": 100,
+  "commit": false,
+  "contributorsPerLine": 7,
+  "contributors": [
+    {
+      "login": "argenos",
+      "name": "Argentina Ortega",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5426039?v=4",
+      "profile": "https://github.com/argenos",
+      "contributions": ["code", "maintenance", "ideas"]
+    },
+    {
+      "login": "sigrunixia",
+      "name": "Rebbecca Bishop",
+      "avatar_url": "https://avatars.githubusercontent.com/u/68425372?v=4",
+      "profile": "https://github.com/sigrunixia",
+      "contributions": ["maintenance", "infra"]
+    }
+  ]
+}
