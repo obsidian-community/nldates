@@ -7,8 +7,8 @@ import {
   EditorSuggestTriggerInfo,
   TFile,
 } from "obsidian";
-import type NaturalLanguageDates from "src/main";
-import { generateMarkdownLink } from "src/utils";
+import type NaturalLanguageDates from "../main";
+import { generateMarkdownLink } from "../utils";
 
 interface IDateCompletion {
   label: string;
@@ -31,7 +31,9 @@ export default class DateSuggest extends EditorSuggest<IDateCompletion> {
     });
 
     if (this.plugin.settings.autosuggestToggleLink) {
-      this.setInstructions([{ command: "Shift", purpose: "Keep text as alias" }]);
+      this.setInstructions([
+        { command: "Shift", purpose: "Keep text as alias" },
+      ]);
     }
   }
 
@@ -70,7 +72,8 @@ export default class DateSuggest extends EditorSuggest<IDateCompletion> {
     }
 
     const relativeDate =
-      context.query.match(/^in ([+-]?\d+)/i) || context.query.match(/^([+-]?\d+)/i);
+      context.query.match(/^in ([+-]?\d+)/i) ||
+      context.query.match(/^([+-]?\d+)/i);
     if (relativeDate) {
       const timeDelta = relativeDate[1];
       return [
@@ -85,16 +88,21 @@ export default class DateSuggest extends EditorSuggest<IDateCompletion> {
       ].filter((items) => items.label.toLowerCase().startsWith(context.query));
     }
 
-    return [{ label: "Today" }, { label: "Yesterday" }, { label: "Tomorrow" }].filter(
-      (items) => items.label.toLowerCase().startsWith(context.query)
-    );
+    return [
+      { label: "Today" },
+      { label: "Yesterday" },
+      { label: "Tomorrow" },
+    ].filter((items) => items.label.toLowerCase().startsWith(context.query));
   }
 
   renderSuggestion(suggestion: IDateCompletion, el: HTMLElement): void {
     el.setText(suggestion.label);
   }
 
-  selectSuggestion(suggestion: IDateCompletion, event: KeyboardEvent | MouseEvent): void {
+  selectSuggestion(
+    suggestion: IDateCompletion,
+    event: KeyboardEvent | MouseEvent
+  ): void {
     const { editor } = this.context;
 
     const includeAlias = event.shiftKey;

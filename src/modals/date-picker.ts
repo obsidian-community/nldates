@@ -1,5 +1,5 @@
 import { App, MarkdownView, Modal, Setting } from "obsidian";
-import { generateMarkdownLink } from "src/utils";
+import { generateMarkdownLink } from "../utils";
 import type NaturalLanguageDates from "../main";
 
 export default class DatePickerModal extends Modal {
@@ -73,13 +73,15 @@ export default class DatePickerModal extends Modal {
           });
         });
       new Setting(formEl).setName("Add as link?").addToggle((toggleEl) => {
-        toggleEl.setValue(this.plugin.settings.modalToggleLink).onChange((value) => {
-          insertAsLink = value;
-          this.plugin.settings.modalToggleLink = insertAsLink;
-          this.plugin.saveSettings();
+        toggleEl
+          .setValue(this.plugin.settings.modalToggleLink)
+          .onChange((value) => {
+            insertAsLink = value;
+            this.plugin.settings.modalToggleLink = insertAsLink;
+            this.plugin.saveSettings();
 
-          previewEl.setText(getDateStr());
-        });
+            previewEl.setText(getDateStr());
+          });
       });
 
       formEl.createDiv("modal-button-container", (buttonContainerEl) => {
