@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Feature Requests
+    url: https://github.com/obsidian-community/nldates
+    about: We are not accepting feature requests at this time. The plugin is being stabilized under new community maintainership. Check back later.
