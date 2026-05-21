@@ -5,7 +5,6 @@ import {
   EditorSuggest,
   EditorSuggestContext,
   EditorSuggestTriggerInfo,
-  TFile,
 } from "obsidian";
 import type NaturalLanguageDates from "../main";
 import { generateMarkdownLink } from "../utils";
@@ -130,9 +129,8 @@ export default class DateSuggest extends EditorSuggest<IDateCompletion> {
 
   onTrigger(
     cursor: EditorPosition,
-    editor: Editor,
-    file: TFile
-  ): EditorSuggestTriggerInfo {
+    editor: Editor
+  ): EditorSuggestTriggerInfo | null {
     if (!this.plugin.settings.isAutosuggestEnabled) {
       return null;
     }

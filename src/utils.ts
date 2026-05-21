@@ -95,7 +95,7 @@ export function generateMarkdownLink(app: App, subpath: string, alias?: string) 
   }
 }
 
-export async function getOrCreateDailyNote(date: Moment): Promise<TFile | null> {
+export async function getOrCreateDailyNote(date: Moment): Promise<TFile> {
   // Borrowed from the Slated plugin:
   // https://github.com/tgrosinger/slated-obsidian/blob/main/src/vault.ts#L17
   const desiredNote = getDailyNote(date, getAllDailyNotes());

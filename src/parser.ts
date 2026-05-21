@@ -60,7 +60,10 @@ export default class NLDParser {
     this.chrono = getConfiguredChrono();
   }
 
-  getParsedDate(selectedText: string, weekStartPreference: DayOfWeek): Date {
+  getParsedDate(
+    selectedText: string,
+    weekStartPreference: DayOfWeek
+  ): Date | null {
     const parser = this.chrono;
     const initialParse = parser.parse(selectedText);
     const weekdayIsCertain = initialParse[0]?.start.isCertain("weekday");

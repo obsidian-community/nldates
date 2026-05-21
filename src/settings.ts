@@ -2,15 +2,21 @@ import { App, PluginSettingTab, Setting } from "obsidian";
 import NaturalLanguageDates from "./main";
 import { getLocaleWeekStart } from "./utils";
 
-export type DayOfWeek =
-  | "sunday"
-  | "monday"
-  | "tuesday"
-  | "wednesday"
-  | "thursday"
-  | "friday"
-  | "saturday"
-  | "locale-default";
+const dayOfWeekOptions = [
+  "sunday",
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+  "locale-default",
+] as const;
+function isDayOfWeek(value: string): value is DayOfWeek {
+  return dayOfWeekOptions.includes(value as DayOfWeek);
+}
+
+export type DayOfWeek = typeof dayOfWeekOptions[number];
 
 export interface NLDSettings {
   autosuggestToggleLink: boolean;
@@ -97,7 +103,15 @@ export class NLDSettingsTab extends PluginSettingTab {
           dropdown.addOption(weekdays[i], day);
         });
         dropdown.setValue(this.plugin.settings.weekStart.toLowerCase());
-        dropdown.onChange(async (value: DayOfWeek) => {
+        dropdown.onChange(async (value: string) => {
+          if (!isDayOfWeek(value)) {
+            console.error(
+              `Invalid week start value: ${value}. Must be one of ${dayOfWeekOptions.join(
+                ", "
+              )}`
+            );
+            return;
+          }
           this.plugin.settings.weekStart = value;
           await this.plugin.saveSettings();
         });

@@ -13,8 +13,8 @@ import {
 import { getFormattedDate, getOrCreateDailyNote, parseTruthy } from "./utils";
 
 export default class NaturalLanguageDates extends Plugin {
-  private parser: NLDParser;
-  public settings: NLDSettings;
+  private parser!: NLDParser;
+  public settings!: NLDSettings;
 
   async onload(): Promise<void> {
     await this.loadSettings();
