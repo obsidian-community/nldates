@@ -6,9 +6,6 @@ on:
     tags:
       - "*" # Push events to matching any tag format, i.e. 1.0, 20.15.10
 
-env:
-  PLUGIN_NAME: nldates-obsidian # Change this to the name of your plugin-id folder
-
 permissions:
   contents: write
 
@@ -26,9 +23,6 @@ jobs:
         run: |
           npm ci
           npm run build
-          mkdir ${{ env.PLUGIN_NAME }}
-          cp main.js manifest.json ${{ env.PLUGIN_NAME }}
-          zip -r ${{ env.PLUGIN_NAME }}-${{ github.ref_name }}.zip ${{ env.PLUGIN_NAME }}
           ls
       - name: Create release
         uses: softprops/action-gh-release@v2
@@ -36,6 +30,5 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            ${{ env.PLUGIN_NAME }}-${{ github.ref_name }}.zip
             main.js
             manifest.json
